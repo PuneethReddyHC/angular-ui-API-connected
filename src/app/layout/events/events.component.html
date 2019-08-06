@@ -1,0 +1,62 @@
+<form #editForm="ngForm" (ngSubmit)="save(editForm)" *ngIf="toggleForm">
+  <h2>Edit Item</h2>
+  <div class="form-group">
+    <label for="">
+      Event Id:
+    </label>
+    <input type="text" class="form-control" name="event_id" value="" [ngModel]="selectedItem.event_id">
+  </div>
+  <div class="form-group">
+    <label for="">
+      Event Name:
+    </label>
+    <input type="text" class="form-control" name="event_name" value="" [ngModel]="selectedItem.event_name">
+  </div>
+  <button type="submit" name="button" class="btn btn-success">Save</button>
+</form>
+
+
+<div>
+  <button class="button button2" (click)="addevent()" style="float: right;">Add Event</button>
+</div>
+
+
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+  <!-- Position Column -->
+  <ng-container matColumnDef="event_id">
+    <th mat-header-cell *matHeaderCellDef> Event Id </th>
+    <td mat-cell *matCellDef="let element"> {{element.event_id}} </td>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="event_name">
+    <th mat-header-cell *matHeaderCellDef> Name </th>
+    <td mat-cell *matCellDef="let element"> {{element.event_name}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="actions">
+    <th mat-header-cell *matHeaderCellDef> Action </th>
+    <td mat-cell *matCellDef="let element">
+      <button class="btn-primary" (click)="edit(element)" [disabled]="toggleForm">
+
+        Edit
+
+
+      </button>
+      &nbsp;
+
+      <button class="btn-danger" (click)="delete(element.event_id)">
+
+        Delete
+
+      </button>
+
+    </td>
+
+  </ng-container>
+
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+

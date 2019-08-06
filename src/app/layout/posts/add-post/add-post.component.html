@@ -1,0 +1,22 @@
+<div>
+  <form  (ngSubmit)=onSubmit() style="float:center" >
+    <div>
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="title" name=title [(ngModel)]=add_post.title >
+    </mat-form-field>
+  <br>
+  <br>
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="description" name=description [(ngModel)]=add_post.description >
+    </mat-form-field>
+    <br>
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="images" name=images [(ngModel)]=add_post.images >
+    </mat-form-field>
+    </div>
+    <br>
+    <button type="submit" class="btn btn-primary">SAVE</button>
+  </form>
+  
+  </div>
+  

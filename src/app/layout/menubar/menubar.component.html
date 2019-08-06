@@ -1,0 +1,130 @@
+<div id="sidebar">
+  <div class="user-info">
+    <!-- <img
+      class="profile-image"
+      src="{{ this.getimage }}"
+      onError="this.onerror=null;this.src='assets/images/smarthealth_bp.png'"
+    /> -->
+    <div class="edit-btn" [routerLink]="['/profile']">
+      <mat-icon class="icon-lg editer" svgIcon="edit"></mat-icon>
+    </div>
+    <div class="detail" *ngIf="this.userdata">
+      <h6 *ngIf="user_type=='patient'">{{ this.prof_username}}({{this.prof_firstname}})</h6>
+      <h6 *ngIf="user_type!='patient' ">{{ this.prof_username}}</h6>
+      <small *ngIf="user_type!='patient'">{{ this.prof_type }}</small>
+    </div>
+  </div>
+  <hr />
+
+  <mat-nav-list>
+    <a
+      mat-list-item
+      *ngIf="
+        role_name == 'admin' ||
+        role_name == 'care_unit_admin' ||
+        role_name == 'virtual_clinic' ||
+        role_name == 'nurse' ||
+        role_name == 'care_unit_user' ||
+        role_name == 'doctor' ||
+        role_name == 'admin_user'
+      "
+      [routerLinkActive]="'active'"
+      [routerLink]="['/dashboard']" [routerLinkActiveOptions]="{exact: true}"
+    >
+      <mat-icon class="sidenav-icon">dashboard</mat-icon>Dashboard
+    </a>
+
+    <a
+      mat-list-item
+      *ngIf="user_type == 'patient'"
+      [routerLinkActive]="'active'"
+      [routerLink]="['/dashboard']" [routerLinkActiveOptions]="{exact: true}"
+    >
+      <mat-icon class="icon-lg" svgIcon="patient"></mat-icon>Patient Vitals
+    </a>
+
+    <a
+      mat-list-item
+      *ngIf="role_name == 'admin' || role_name == 'admin_user'"
+      [routerLinkActive]="'active'"
+      [routerLink]="['/careunit']" [routerLinkActiveOptions]="{exact: true}"
+    >
+      <mat-icon class="icon-lg" svgIcon="care"></mat-icon>Care Unit
+    </a>
+    <a
+      *ngIf="role_name == 'admin' || role_name == 'admin_user'"
+      mat-list-item
+      [routerLinkActive]="'active'"
+      [routerLink]="['/virtualclinic']" [routerLinkActiveOptions]="{exact: true}"
+    >
+      <mat-icon class="icon-lg" svgIcon="clinic"></mat-icon>Virtual Clinic
+    </a>
+
+    <a
+      *ngIf="
+        role_name == 'care_unit_admin' ||
+        role_name == 'admin' ||
+        role_name == 'admin_user' ||
+        role_name == 'care_unit_user' ||
+        role_name == 'doctor' ||
+        role_name == 'nurse'
+      "
+      mat-list-item
+      [routerLinkActive]="'active'"
+      [routerLink]="['/patients']" [routerLinkActiveOptions]="{exact: true}"
+    >
+      <mat-icon class="icon-lg" svgIcon="patient"></mat-icon>Patients
+    </a>
+
+    <a
+      *ngIf="role_name == 'care_unit_admin' || role_name == 'admin'"
+      mat-list-item
+      [routerLinkActive]="'active'"
+      [routerLink]="['/users']" [routerLinkActiveOptions]="{exact: true}"
+    >
+      <mat-icon class="icon-lg" svgIcon="users"></mat-icon>Users
+    </a>
+
+    <!-- <a
+      *ngIf="role_name == 'admin' || role_name == 'admin_user'"
+      mat-list-item
+      [routerLinkActive]="'active'"
+      [routerLink]="['/healthkit']"
+    >
+      <mat-icon class="icon-lg" svgIcon="health"></mat-icon>Health Kits
+    </a>
+
+    <a
+      *ngIf="role_name == 'admin' || role_name == 'admin_user'"
+      mat-list-item
+      [routerLinkActive]="'active'"
+      [routerLink]="['/device']"
+    >
+      <mat-icon class="icon-lg" svgIcon="device"></mat-icon>Devices
+    </a> -->
+
+    <!-- <a mat-list-item [routerLinkActive]="'active'" [routerLink]="['/reports']">
+            <mat-icon class="icon-lg" svgIcon="report"></mat-icon>Reports
+        </a> -->
+
+    <!-- <div class="nested-menu">
+            <a mat-list-item (click)="addExpandClass('pages')">
+                <mat-icon class="sidenav-icon">add</mat-icon> {{ 'Menu' | translate }}
+            </a>
+            <ul class="nested submenu" [class.expand]="showMenu === 'pages'">
+                <li>
+                    <a href="javascript:void(0)"><span>{{ 'Submenu' | translate }}</span></a>
+                </li>
+                <li>
+                    <a href="javascript:void(0)"><span>{{ 'Submenu' | translate }}</span></a>
+                </li>
+                <li>
+                    <a href="javascript:void(0)"><span>{{ 'Submenu' | translate }}</span></a>
+                </li>
+            </ul>
+        </div> -->
+  </mat-nav-list>
+  <div class="footer-v">
+    <p>v_0.0.4</p>
+  </div>
+</div>

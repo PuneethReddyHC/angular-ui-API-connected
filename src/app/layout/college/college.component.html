@@ -1,0 +1,73 @@
+<form #editForm="ngForm" (ngSubmit)="save(editForm)" *ngIf="toggleForm">
+  <h2>College Item</h2>
+  <div class="form-group">
+    <label for="">
+      College Id:
+    </label>
+    <input type="text" class="form-control" name="college_id" value="" [ngModel]="selectedItem.college_id">
+  </div>
+  <div class="form-group">
+    <label for="">
+      College Name:
+    </label>
+    <input type="text" class="form-control" name="college_name" value="" [ngModel]="selectedItem.college_name">
+  </div>
+  <div class="form-group">
+    <label for="">
+      College loc:
+    </label>
+    <input type="text" class="form-control" name="college_loc" value="" [ngModel]="selectedItem.college_loc">
+  </div>
+  <button type="submit" name="button" class="btn btn-success">Save</button>
+</form>
+
+
+
+<div>
+  <button class="button button2" (click)="addcollege()" style="float: right;">Add college</button>
+</div>
+
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+  <!-- Position Column -->
+  <ng-container matColumnDef="college_id">
+    <th mat-header-cell *matHeaderCellDef> College Id </th>
+    <td mat-cell *matCellDef="let element"> {{element.college_id}} </td>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="college_name">
+    <th mat-header-cell *matHeaderCellDef> Name </th>
+    <td mat-cell *matCellDef="let element"> {{element.college_name}} </td>
+  </ng-container>
+ 
+  <ng-container matColumnDef="college_loc">
+    <th mat-header-cell *matHeaderCellDef> College loc </th>
+    <td mat-cell *matCellDef="let element"> {{element.college_loc}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="actions">
+    <th mat-header-cell *matHeaderCellDef> Action </th>
+    <td mat-cell *matCellDef="let element">
+      <button class="btn-primary" (click)="edit(element)" [disabled]="toggleForm">
+
+        Edit
+
+
+      </button>
+      &nbsp;
+
+      <button class="btn-danger" (click)="delete(element.college_id)">
+
+        Delete
+
+      </button>
+
+    </td>
+
+  </ng-container>
+
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+

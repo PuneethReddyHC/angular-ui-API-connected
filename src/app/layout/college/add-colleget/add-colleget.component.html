@@ -1,0 +1,22 @@
+<div>
+  <form  (ngSubmit)=onSubmit() style="float:center" >
+    <div>
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="college Id" name=college_id [(ngModel)]=add_college.college_id >
+    </mat-form-field>
+  <br>
+  <br>
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="college Name" name=college_name [(ngModel)]=add_college.college_name >
+    </mat-form-field>
+    <br>
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="location" name=college_loc [(ngModel)]=add_college.college_loc >
+    </mat-form-field>
+    </div>
+    <br>
+    <button type="submit" class="btn btn-primary">SAVE</button>
+  </form>
+  
+  </div>
+  

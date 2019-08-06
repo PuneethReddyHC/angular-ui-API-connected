@@ -1,0 +1,18 @@
+<div>
+  <form  (ngSubmit)=onSubmit() style="float:center" >
+    <div>
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Event Id" name=event_id [(ngModel)]=add_event.event_id >
+    </mat-form-field>
+  <br>
+  <br>
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Event Name" name=event_name [(ngModel)]=add_event.event_name >
+    </mat-form-field>
+    </div>
+    <br>
+    <button type="submit" class="btn btn-primary">SAVE</button>
+  </form>
+  
+  </div>
+  
